@@ -19,17 +19,9 @@
               <tr>
                 <td><%= item.product.name %></td>
                 <td>
-                  <!-- Spinner para selecionar quantidade -->
+                  <!-- Campo para selecionar quantidade -->
                   <%= form_with(url: update_item_cart_path(item.id), method: :put, local: true) do |f| %>
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <button class="btn btn-outline-secondary btn-minus" type="button" data-id="<%= item.id %>">-</button>
-                      </div>
-                      <%= f.number_field :quantity, value: item.quantity, min: 1, class: 'form-control quantity-spinner', id: "quantity-#{item.id}" %>
-                      <div class="input-group-append">
-                        <button class="btn btn-outline-secondary btn-plus" type="button" data-id="<%= item.id %>">+</button>
-                      </div>
-                    </div>
+                    <%= f.number_field :quantity, value: item.quantity, min: 1, class: 'form-control quantity-spinner', id: "quantity-#{item.id}" %>
                     <%= f.submit 'Atualizar', class: 'btn btn-warning mt-2 btn-block' %>
                   <% end %>
                 </td>
@@ -64,35 +56,3 @@
     <%= link_to 'Voltar aos Produtos', products_path, class: 'btn btn-outline-primary btn-lg' %>
   </div>
 <% end %>
-
-<!-- Script para aumentar/diminuir a quantidade -->
-<script>
-  document.addEventListener('turbo:load', function () {
-  // Seleciona todos os botões de aumentar/diminuir
-  const minusButtons = document.querySelectorAll('.btn-minus');
-  const plusButtons = document.querySelectorAll('.btn-plus');
-
-  // Adiciona evento de clique nos botões de diminuir quantidade
-  minusButtons.forEach(button => {
-    button.addEventListener('click', function () {
-      const productId = button.getAttribute('data-id');
-      const quantityField = document.getElementById(`quantity-${productId}`);
-      let currentValue = parseInt(quantityField.value, 10);
-      if (currentValue > 1) {
-        quantityField.value = currentValue - 1;
-      }
-    });
-  });
-
-  // Adiciona evento de clique nos botões de aumentar quantidade
-  plusButtons.forEach(button => {
-    button.addEventListener('click', function () {
-      const productId = button.getAttribute('data-id');
-      const quantityField = document.getElementById(`quantity-${productId}`);
-      let currentValue = parseInt(quantityField.value, 10);
-      quantityField.value = currentValue + 1;
-    });
-  });
-});
-
-</script>
