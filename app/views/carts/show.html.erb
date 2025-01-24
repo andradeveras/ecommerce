@@ -1,26 +1,41 @@
-<h1>Carrinho de Compras</h1>
+<h1 class="text-center my-4">Carrinho de Compras</h1>
 
 <% if @cart.cart_items.any? %>
-  <ul>
-    <% @cart.cart_items.each do |item| %>
-      <li>
-        <%= item.product.name %> - 
-        <%= number_to_currency(item.product.price) %> x 
-        <%= item.quantity %> = 
-        <%= number_to_currency(item.product.price * item.quantity) %>
-        <%= button_to 'Remover', remove_item_cart_path(item.id), method: :delete, data: { confirm: 'Tem certeza que deseja remover este item?' } %>
-        <%= form_with(url: update_item_cart_path(item.id), method: :put) do |f| %>
-          <%= f.number_field :quantity, value: item.quantity, min: 1 %>
-          <%= f.submit 'Atualizar Quantidade' %>
+  <div class="container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Produto</th>
+          <th scope="col">Quantidade</th>
+          <th scope="col">Preço</th>
+          <th scope="col">Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart.cart_items.each do |item| %>
+          <tr>
+            <td><%= item.product.name %></td>
+            <td>
+              <%= form_with(url: update_item_cart_path(item.id), method: :put, local: true) do |f| %>
+                <%= f.number_field :quantity, value: item.quantity, min: 1, class: 'form-control' %>
+                <%= f.submit 'Atualizar', class: 'btn btn-primary mt-2' %>
+              <% end %>
+            </td>
+            <td><%= number_to_currency(item.product.price * item.quantity) %></td>
+            <td>
+              <%= button_to 'Remover', remove_item_cart_path(item.id), method: :delete, class: 'btn btn-danger', data: { confirm: 'Tem certeza que deseja remover este item?' } %>
+            </td>
+          </tr>
         <% end %>
-        <%= link_to 'Voltar a produtos', products_path, class: 'btn btn-primary'%>
+      </tbody>
+    </table>
 
-      </li>
-    <% end %>
-  </ul>
+    <h3 class="text-right">Total: <%= number_to_currency(@cart.cart_items.sum { |item| item.product.price * item.quantity }) %></h3>
 
-  <h3>Total: <%= number_to_currency(@cart.cart_items.sum { |item| item.product.price * item.quantity }) %></h3>
-  
+    <div class="text-center my-4">
+      <%= link_to 'Voltar aos Produtos', products_path, class: 'btn btn-secondary' %>
+    </div>
+  </div>
 <% else %>
-  <p>Seu carrinho está vazio.</p>
+  <p class="text-center">Seu carrinho está vazio.</p>
 <% end %>
