@@ -1,18 +1,15 @@
 Rails.application.routes.draw do
-  get 'carts/show'
-  get 'carts/add_item'
-  get 'carts/remove_item'
-  get 'carts/update_item'
-  get 'products/index'
-  get 'products/show'
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  root to: "home#index" 
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  root 'products#index'
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  resources :products, only: [:index, :show]
+  
+  resources :carts, only: [:show] do
+    member do
+      post 'add_item/:product_id', to: 'carts#add_item', as: 'add_item'
+      delete 'remove_item/:id', to: 'carts#remove_item', as: 'remove_item'
+      put 'update_item/:id', to: 'carts#update_item', as: 'update_item'
+    end
+  end
 end

@@ -1,2 +1,26 @@
-<h1>Carts#show</h1>
-<p>Find me in app/views/carts/show.html.erb</p>
+<h1>Carrinho de Compras</h1>
+
+<% if @cart.cart_items.any? %>
+  <ul>
+    <% @cart.cart_items.each do |item| %>
+      <li>
+        <%= item.product.name %> - 
+        <%= number_to_currency(item.product.price) %> x 
+        <%= item.quantity %> = 
+        <%= number_to_currency(item.product.price * item.quantity) %>
+        <%= button_to 'Remover', remove_item_cart_path(item.id), method: :delete, data: { confirm: 'Tem certeza que deseja remover este item?' } %>
+        <%= form_with(url: update_item_cart_path(item.id), method: :put) do |f| %>
+          <%= f.number_field :quantity, value: item.quantity, min: 1 %>
+          <%= f.submit 'Atualizar Quantidade' %>
+        <% end %>
+        <%= link_to 'Voltar a produtos', products_path, class: 'btn btn-primary'%>
+
+      </li>
+    <% end %>
+  </ul>
+
+  <h3>Total: <%= number_to_currency(@cart.cart_items.sum { |item| item.product.price * item.quantity }) %></h3>
+  
+<% else %>
+  <p>Seu carrinho está vazio.</p>
+<% end %>

@@ -1,2 +1,12 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<h1><%= @product.name %></h1>
+<p><%= @product.description %></p>
+<p><%= number_to_currency(@product.price) %></p>
+
+<%= form_with(url: add_item_cart_path(product_id: @product.id), method: :post) do |f| %>
+  <%= f.label :quantity, 'Quantidade' %>
+  <%= f.number_field :quantity, value: 1, min: 1 %>
+  <%= f.submit 'Adicionar ao Carrinho' %>
+<% end %>
+
+<%= link_to 'Voltar', products_path, class: 'btn btn-primary'%>
+
