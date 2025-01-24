@@ -11,6 +11,35 @@
   </head>
 
   <body>
+   <!-- Header com o Menu de Largura Total -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="<%= root_path %>">Bluesoft</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto w-100 d-flex justify-content-end">
+          <!-- Link para Todos os Produtos -->
+          <li class="nav-item">
+            <%= link_to 'Todos os Produtos', products_path, class: 'nav-link' %>
+          </li>
+
+          <!-- Link para Logout -->
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to 'Login', new_user_session_path, class: 'nav-link' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
     <p class="notice"><%= notice %></p> 
     <p class="alert"><%= alert %></p> 
     <%= yield %>
