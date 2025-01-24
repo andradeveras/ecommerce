@@ -1,12 +1,17 @@
-<h1>Catálogo de Produtos</h1>
+<h1 class="text-center text-white my-4">Catálogo de Produtos</h1>
 
-<div class="products-list">
-  <% @products.each do |product| %>
-    <div class="product-item">
-      <h2><%= product.name %></h2>
-      <p>Preço: R$ <%= number_to_currency(product.price) %></p>
-      <%= link_to 'Ver detalhes', product_path(product), class: 'btn btn-primary' %>
-    </div>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm product-item">
+          <div class="card-body">
+            <h5 class="card-title"><%= product.name %></h5>
+            <p class="card-text">Preço: <%= number_to_currency(product.price) %></p>
+            <%= link_to 'Ver detalhes', product_path(product), class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
-
