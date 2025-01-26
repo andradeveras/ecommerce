@@ -1,0 +1,24 @@
+<!-- app/views/devise/passwords/new.html.erb -->
+<div class="container d-flex align-items-center justify-content-center devise-container" style="min-height: 100vh;">
+  <div class="col-md-6 col-lg-5">
+    <div class="card shadow-lg rounded-4 devise-card">
+      <div class="card-body p-4 devise-card-body">
+        <h2 class="text-center mb-4 devise-heading">Recuperar senha</h2>
+        
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), class: "needs-validation devise-form") do |f| %>
+          <div class="mb-3 devise-form-group">
+            <%= f.label :email, class: "form-label devise-form-label" %>
+            <%= f.email_field :email, autofocus: true, class: "form-control devise-form-control", required: true %>
+          </div>
+
+          <%= f.submit "Enviar instruções", class: "btn btn-primary w-100 devise-btn" %>
+        <% end %>
+
+        <div class="text-center mt-3 devise-text-center">
+          <%= link_to "Voltar para o login", new_session_path(resource_name), class: "text-decoration-none devise-link" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

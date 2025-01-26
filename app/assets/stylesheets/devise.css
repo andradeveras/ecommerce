@@ -1,0 +1,49 @@
+/* Devise.css */
+
+/* Estilo da página de login com fundo suave de azul claro */
+body.devise-pages {
+  background-color: #f7f8fc; /* Cor suave de fundo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Estilo do card de login */
+.devise-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.devise-card-body {
+  padding: 30px;
+  font-size: 1rem;
+}
+
+.devise-btn {
+  background-color: #1e3a8a;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  border: none;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.devise-link {
+  display: block;
+  margin-top: 20px;
+  color: #1e3a8a;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.devise-heading {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #1e3a8a;
+}

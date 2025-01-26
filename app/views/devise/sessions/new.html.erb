@@ -1,0 +1,35 @@
+<div class="container mt-5 devise-container">
+  <div class="row justify-content-center devise-row">
+    <div class="col-md-6">
+      <div class="card shadow-lg devise-card">
+        <div class="card-body devise-card-body">
+          <h2 class="text-center mb-4 devise-heading">Login</h2>
+
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "needs-validation devise-form") do |f| %>
+            <div class="form-group mb-3 devise-form-group">
+              <%= f.label :email, class: "form-label devise-form-label" %>
+              <%= f.email_field :email, class: "form-control devise-form-control", required: true %>
+            </div>
+
+            <div class="form-group mb-3 devise-form-group">
+              <%= f.label :password, class: "form-label devise-form-label" %>
+              <%= f.password_field :password, class: "form-control devise-form-control", required: true %>
+            </div>
+
+            <div class="form-check mb-3 devise-form-check">
+              <%= f.check_box :remember_me, class: "form-check-input devise-form-check-input" %>
+              <%= f.label :remember_me, class: "form-check-label devise-form-check-label" %>
+            </div>
+
+            <%= f.submit "Entrar", class: "btn btn-primary btn-block devise-btn" %>
+          <% end %>
+
+          <div class="text-center mt-3 devise-text-center">
+            <%= link_to "Esqueceu a senha?", new_password_path(resource_name), class: "text-decoration-none devise-link" %> |
+            <%= link_to "Criar conta", new_registration_path(resource_name), class: "text-decoration-none devise-link" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

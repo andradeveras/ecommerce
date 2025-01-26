@@ -1,0 +1,244 @@
+/* Geral */
+body {
+    background-color: #02255a !important;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* Títulos */
+  h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  h1.text-center {
+    font-size: 3.5rem;
+    color: #eee9e9;
+  }
+  
+  /* Cartões de Produtos */
+  .card {
+    border-radius: 20px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    border: none;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 200px;
+
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .product-item .card-body {
+    padding: 25px;
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    color: #1e3a8a;
+    font-weight: bold;
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+  }
+  
+  .card-title:hover {
+    color: #2563eb;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  /* Tabela Detalhes Produto */
+  .table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .table th, .table td {
+    text-align: left;
+    padding: 15px 20px;
+    font-size: 1rem;
+  }
+  
+  .table th {
+    background-color: #1e3a8a;
+    color: white;
+    font-weight: 600;
+  }
+  
+  .table-striped tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .table-bordered th, .table-bordered td {
+    border: 1px solid #ddd;
+  }
+  
+  /* Botões */
+  .btn {
+    font-size: 1.1rem;
+    padding: 14px 22px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn:hover {
+    transform: scale(1.05);
+  }
+  
+  .btn-primary {
+    background-color: #1e3a8a;
+    border-color: #1e3a8a;
+  }
+  
+  .btn-primary:hover {
+    background-color: #2563eb;
+    border-color: #2563eb;
+  }
+  
+  .btn-warning {
+    background-color: #f59e0b;
+    border-color: #f59e0b;
+  }
+  
+  .btn-warning:hover {
+    background-color: #f97316;
+    border-color: #f97316;
+  }
+  
+  .btn-danger {
+    background-color: #dc2626;
+    border-color: #dc2626;
+  }
+  
+  .btn-danger:hover {
+    background-color: #ef4444;
+    border-color: #ef4444;
+  }
+  
+  .btn-secondary {
+    background-color: #6b7280;
+    border-color: #6b7280;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #4b5563;
+    border-color: #4b5563;
+  }
+  
+  .btn-outline-primary {
+    border: 2px solid #1e3a8a;
+    color: #1e3a8a;
+    background-color: transparent;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #1e3a8a;
+    color: white;
+  }
+  
+  /* Carrinho de Compras */
+  .cart-item {
+    padding: 12px 20px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cart-item:last-child {
+    border-bottom: none;
+  }
+  
+  .cart-item:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .quantity-spinner {
+    width: 80px;
+    display: inline-block;
+  }
+  
+  /* Estilos para o Total do Carrinho */
+  .card .card-body h4 {
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .text-success {
+    color: #10b981;
+    font-weight: bold;
+  }
+  
+  /* Alertas */
+  .alert-warning {
+    background-color: #fcd34d;
+    color: #1e3a8a;
+    font-weight: bold;
+  }
+  
+  /* Outros Ajustes */
+  .my-4 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .mt-4 {
+    margin-top: 2rem;
+  }
+  
+  .mb-4 {
+    margin-bottom: 2rem;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .text-uppercase {
+    text-transform: uppercase;
+  }
+  
+  .w-25 {
+    width: 25% !important;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .card {
+      margin-bottom: 20px;
+      transform: none;
+    }
+  
+    .product-item .card-body {
+      padding: 20px;
+    }
+  
+    .btn {
+      width: auto;
+      padding: 12px 18px;
+    }
+  
+    h1 {
+      font-size: 2.2rem;
+    }
+  }
+  
