@@ -27,7 +27,15 @@
           <li class="nav-item">
             <%= link_to 'Todos os Produtos', products_path, class: 'nav-link' %>
           </li>
-
+          <!-- Ícone do Carrinho de Compras -->
+          <li class="nav-item position-relative">
+            <%= link_to cart_path(current_user.cart), class: 'nav-link position-relative' do %>
+              <i class="fa-solid fa-cart-shopping fa-xl"></i>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <%= current_user.cart.cart_items.size %>
+             </span>
+            <% end %>
+          </li>
           <!-- Link para Logout -->
           <% if user_signed_in? %>
             <li class="nav-item">
