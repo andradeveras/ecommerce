@@ -1,4 +1,23 @@
-# db/seeds.rb
+require 'httparty'
+require 'dotenv/load' # Carregar as variáveis de ambiente
+
+Dotenv.load('.env')
+UNSPLASH_ACCESS_KEY = ENV['UNSPLASH_ACCESS_KEY']
+def fetch_image(query)
+  encoded_query = URI.encode_www_form_component("#{query} produtos") # Codifica para URL segura
+  url = "https://api.unsplash.com/photos/random?query=#{encoded_query}&client_id=#{UNSPLASH_ACCESS_KEY}&w=800&h=600&orientation=landscape"
+  
+  response = HTTParty.get(url)
+
+  if response.success?
+    json = JSON.parse(response.body)
+    return json["urls"]["regular"]
+  else
+    puts "Erro ao buscar imagem para: #{query}"
+    return nil
+  end
+end
+
 products_data = [
   {
     "name": "Smartphone iPhone 14 Pro",
@@ -51,8 +70,12 @@ products_data = [
     "price": 999.99
   }
 ]
-
+CartItem.delete_all
+Product.delete_all
 
 products_data.each do |product|
-  Product.create(product)
+  image_url = fetch_image(product[:name]) # Busca a imagem no Unsplash
+  Product.create(product.merge(image: image_url))
 end
+
+

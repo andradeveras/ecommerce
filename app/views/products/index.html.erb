@@ -8,6 +8,13 @@
           <div class="card-body">
             <h5 class="card-title"><%= product.name %></h5>
             <p class="card-text">Preço: <%= number_to_currency(product.price) %></p>
+
+            <% if product.image.present? %>
+              <img src="<%= product.image %>" alt="<%= product.name %>" class="img-fluid" />
+            <% else %>
+              <p>Imagem não disponível</p>
+            <% end %>
+
             <%= link_to 'Ver detalhes', product_path(product), class: 'btn btn-primary' %>
           </div>
         </div>

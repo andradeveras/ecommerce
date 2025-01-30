@@ -7,7 +7,7 @@ class CartsController < ApplicationController
   end
 
   def add_item # Adiciona um item ao carrinho de compras do usuário logado no momento (current_user)
-    @cart = current_user.cart || current_user.create_cart
+    @cart = current_user.cart || current_user.create_cart 
     @product = Product.find(params[:product_id])
     @cart_item = @cart.cart_items.find_or_initialize_by(product: @product)
     @cart_item.quantity ||= 0

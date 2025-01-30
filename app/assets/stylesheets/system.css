@@ -39,6 +39,7 @@ body {
   
   .card-body {
     padding: 20px;
+    height: 500px;
   }
   
   .product-item .card-body {
@@ -93,6 +94,35 @@ body {
   .table-bordered th, .table-bordered td {
     border: 1px solid #ddd;
   }
+
+  /* Adicione esse estilo no seu arquivo de CSS (ex: application.css) */
+  img {
+    width: 100%; /* Ajusta a largura para preencher o contêiner pai */
+    max-width: 400px; /* Limita a largura da imagem */
+    height: 400px; /* Mantém a proporção da imagem */
+    object-fit: cover; /* Faz a imagem cobrir a área sem distorção */
+    margin-bottom: 20px;
+    
+  }
+
+  .product-card img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    object-fit: cover;
+    width: 300px; /* Largura fixa de 300px */
+    height: 200px; /* Altura fixa de 200px */
+    object-fit: cover; /* Assegura que a imagem cubra a área sem distorção */
+
+  }
+
+  img[src*="unsplash.com"] {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    object-fit: cover;
+  }
+  
   
   /* Botões */
   .btn {
@@ -100,6 +130,8 @@ body {
     padding: 14px 22px;
     border-radius: 30px;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    
   }
   
   .btn:hover {
@@ -240,7 +272,5 @@ body {
     h1 {
       font-size: 2.2rem;
     }
-
-    
   }
   
