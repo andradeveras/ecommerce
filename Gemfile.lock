@@ -115,6 +115,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-security (0.18.0)
+      devise (>= 4.3.0)
     diff-lcs (1.5.1)
     dotenv (3.1.7)
     dotenv-rails (3.1.7)
@@ -309,6 +311,7 @@ DEPENDENCIES
   database_cleaner-active_record
   debug
   devise
+  devise-security (~> 0.18.0)
   dotenv-rails
   error_highlight (>= 0.4.0)
   factory_bot_rails

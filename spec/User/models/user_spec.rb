@@ -37,10 +37,24 @@ RSpec.describe User, type: :model do
     end
 
     it "é inválido sem letra maiúscula" do
-      user = User.new(password: "senhafraca@123", password_confirmation: "senhafraca@123")
+      user = User.new(email: "1@1.com", password: "senhafraca@123", password_confirmation: "senhafraca@123")
       expect(user).to be_invalid
       expect(user.errors[:password]).to include("deve conter pelo menos uma letra maiúscula, um número e um caractere especial")
     end
+    it 'bloqueia a conta após 5 tentativas falhas' do
+      # Criando o usuário
+      user = User.create!(email: "1@1.com", password: "SenhaForte@123", password_confirmation: "SenhaForte@123")
+      
+      # Tentativas falhas
+      5.times do
+        user.increment_failed_attempts
+        user.save
+      end
+  
+      # Verificando se a conta foi bloqueada
+      expect(user.failed_attempts).to eq(5)
+    end
+    
   end
 end
 

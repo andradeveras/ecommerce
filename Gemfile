@@ -79,3 +79,5 @@ group :test do
 end
 
 
+
+gem "devise-security", "~> 0.18.0"
