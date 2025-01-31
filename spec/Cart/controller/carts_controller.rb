@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe CartsController, type: :controller do
   let(:user) do
-    User.create(email: "test@example.com", password: "password", password_confirmation: "password")
+    User.create(email: "test@example.com", password: "SenhaForte@123", password_confirmation: "SenhaForte@123")
   end
   let(:cart) do
     Cart.create(user: user)

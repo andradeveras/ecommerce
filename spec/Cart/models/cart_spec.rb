@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Cart, type: :model do
   before do
     # Criação manual de um usuário
-    @user = User.create(email: "test@example.com", password: "password")
+    @user = User.create(email: "test@example.com", password: "SenhaForte@123")
     # Garantir que o usuário tenha um carrinho
     @user.create_cart_if_not_exists
     @cart = @user.cart
@@ -23,7 +23,7 @@ RSpec.describe Cart, type: :model do
 
   it "creates and destroys a cart item" do
     # Criação do usuário sem o callback
-    @user = User.create!(email: "test2@example.com", password: "password")
+    @user = User.create!(email: "test2@example.com", password: "SenhaForte@123")
   
     # Criação do produto
     product = Product.create!(name: "Produto Exemplo", price: 10.0)

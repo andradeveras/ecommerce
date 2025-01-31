@@ -8,6 +8,12 @@ class User < ApplicationRecord
 
   after_create :create_cart
 
+  validates :password, 
+  length: { minimum: 12 }, 
+  format: { with: /\A(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}\z/,
+            message: "deve conter pelo menos uma letra maiúscula, um número e um caractere especial" }
+
+
   def create_cart_if_not_exists
     self.create_cart unless self.cart
   end

@@ -4,7 +4,7 @@ RSpec.describe ProductsController, type: :controller do
   include Devise::Test::ControllerHelpers # Inclui suporte ao Devise para testes de controladores
 
   before do
-    @user = User.create(email: "test@example.com", password: "password") # Criação manual de um usuário e autenticação
+    @user = User.create(email: "test@example.com", password: "SenhaForte@123") # Criação manual de um usuário e autenticação
     sign_in @user
   end
 

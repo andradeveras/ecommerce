@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "User Authentication", type: :request do
   let(:valid_user) do
-    User.create(email: "test@example.com", password: "password123", password_confirmation: "password123")
+    User.create(email: "test@example.com", password: "SenhaForte@123", password_confirmation: "SenhaForte@123")
   end
 
   describe "POST /users/sign_up" do
@@ -10,8 +10,8 @@ RSpec.describe "User Authentication", type: :request do
       post user_registration_path, params: {
         user: {
           email: "newuser@example.com",
-          password: "password123",
-          password_confirmation: "password123"
+          password: "SenhaForte@123",
+          password_confirmation: "SenhaForte@123"
         }
       }
       expect(response).to have_http_status(:see_other)  
@@ -47,7 +47,7 @@ RSpec.describe "User Authentication", type: :request do
       post user_session_path, params: {
         user: {
           email: "test@example.com",
-          password: "password123"
+          password: "SenhaForte@123"
         }
       }
       expect(response).to have_http_status(:see_other)  
